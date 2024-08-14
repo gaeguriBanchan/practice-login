@@ -2,7 +2,7 @@
 import { date, z } from 'zod';
 
 const checkUsername = (username: string) => {
-  const list = ['fuck', '바보'];
+  const list = ['fuck', '바보', '멍청이'];
   return !list.map((target) => username.includes(target)).includes(true);
   // return !username.includes('fuck',);
 };
