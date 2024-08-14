@@ -2,7 +2,9 @@
 import { date, z } from 'zod';
 
 const checkUsername = (username: string) => {
-  return !username.includes('fuck');
+  const list = ['fuck', '바보'];
+  return !list.map((target) => username.includes(target)).includes(true);
+  // return !username.includes('fuck',);
 };
 
 const checkPasswords = ({
@@ -25,7 +27,7 @@ const formSchema = z
       })
       .min(3, '3글자 이상 입력하세요.')
       .max(10, '10글자 이하로 입력하세요.')
-      .refine(checkUsername, 'nico 가 포함되는것은 안됩니다.'),
+      .refine(checkUsername, '욕설이 포함되면 안됩니다.'),
     email: z.string().email('유효한 이메일 형식이 아닙니다.'),
     password: z.string().min(5, '비밀번호는 5글자 이상 작성하세요.'),
   })
