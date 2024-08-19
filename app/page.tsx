@@ -5,6 +5,7 @@ import FormInput from '@/components/form-input';
 import { useFormState } from 'react-dom';
 import { FaFireAlt } from 'react-icons/fa';
 import { checkLogin, login } from './actions';
+// import '@/lib/db';
 
 export default function Home() {
   const [state, dispatch] = useFormState(checkLogin, null);
