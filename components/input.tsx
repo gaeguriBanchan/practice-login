@@ -1,6 +1,7 @@
 import { MdOutlineMailOutline } from 'react-icons/md';
 import { FaRegUser } from 'react-icons/fa';
 import { FaKey } from 'react-icons/fa';
+import { InputHTMLAttributes } from 'react';
 
 interface IFormInputProps {
   type: string;
@@ -11,14 +12,15 @@ interface IFormInputProps {
   img: string;
 }
 
-export default function FormInput({
+export default function Input({
   type,
   placeholder,
   required,
   errors = [],
   name,
   img,
-}: IFormInputProps) {
+  ...rest
+}: IFormInputProps & InputHTMLAttributes<HTMLInputElement>) {
   return (
     <div className="flex flex-col gap-2">
       <div className="flex items-center h-10 bg-white p-2 rounded-3xl border-2 border-black gap-1 ">
@@ -26,7 +28,7 @@ export default function FormInput({
         {img === 'username' ? <FaRegUser /> : null}
         {img === 'password' ? <FaKey /> : null}
         <input
-          className="focus:outline-none"
+          className="focus:outline-none w-full"
           type={type}
           name={name}
           placeholder={placeholder}

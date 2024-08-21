@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  a {
+    @apply text-lime-500 font-extrabold underline-offset-2;
+  }
+}
+
+@layer utilities {
+  .text-bigger-hello {
+    @apply text-3xl font-semibold;
+  }
+}
+@layer components {
+  .primary-btn {
+    @apply w-full bg-lime-500 text-white  font-medium  rounded-md text-center hover:bg-lime-400 transition-colors;
+  }
+}

@@ -1,49 +1,29 @@
 'use client';
 
-import FormBtn from '@/components/form-btn';
-import FormInput from '@/components/form-input';
-import { useFormState } from 'react-dom';
-import { FaFireAlt } from 'react-icons/fa';
-import { checkLogin, login } from './actions';
+import Link from 'next/link';
+import { GiGrapes } from 'react-icons/gi';
 // import '@/lib/db';
 
 export default function Home() {
-  const [state, dispatch] = useFormState(checkLogin, null);
   return (
-    <div className="h-screen flex flex-col items-center justify-center gap-5">
-      <FaFireAlt className="text-red-500 text-5xl" />
-      <form action={dispatch} className="flex flex-col gap-1">
-        <FormInput
-          img="email"
-          name="email"
-          placeholder="Email"
-          required
-          type="email"
-          errors={state?.errors?.fieldErrors.email}
-        />
-        <FormInput
-          img="username"
-          name="username"
-          placeholder="UserName"
-          required
-          type="text"
-          errors={state?.errors?.fieldErrors.username}
-        />
-        <FormInput
-          img="password"
-          name="password"
-          placeholder="Password"
-          required
-          type="password"
-          errors={state?.errors?.fieldErrors.password}
-        />
-        <FormBtn text="Login" />
-        {state?.log === true ? (
-          <div className="w-full bg-red-500 rounded-lg h-10 mx-auto text-center content-center text-white">
-            Welcome!
-          </div>
-        ) : null}
-      </form>
+    <div className="flex flex-col items-center justify-center min-h-screen gap-20 p-6">
+      <div className="flex flex-col items-center gap-2 *:font-medium">
+        {/* <LuGrape className="text-lime-500 text-9xl" /> */}
+        <GiGrapes className="text-lime-500 text-9xl" />
+        <h2 className="text-2xl">뽀리농장</h2>
+        <h2 className="text-2xl">어서오세요!</h2>
+      </div>
+      <div className="flex flex-col items-center gap-3 w-full">
+        <Link href="/create-account" className="primary-btn text-lg py-2.5">
+          시작하기
+        </Link>
+        <div className="flex gap-2">
+          <span>이미 계정이 있나요?</span>
+          <Link href="/log-in" className="hover:underline">
+            로그인
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
